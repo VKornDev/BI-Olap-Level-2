@@ -1,2 +1,5 @@
 *.bpmn
 Лекции
+secrets
+*.DS_Store
+kafka-wb/sasl

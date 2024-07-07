@@ -1,0 +1,14 @@
+docker build -t gcc .
+docker run -it --rm --name fib --cpus="1" -m 256m gcc
+
+docker run -it --name --restart=unless-stopped fib gcc
+docker stop fib
+docker ps -a
+docker restart fib
+docker ps -a
+
+docker stop fib
+docker ps -a
+
+docker rm fib
+docker rmi gcc

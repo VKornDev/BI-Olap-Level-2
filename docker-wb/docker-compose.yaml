@@ -1,0 +1,19 @@
+services:
+  compiler:
+    container_name: fib
+    image: gcc:4.9
+    volumes:
+      - .:/usr/src/myapp
+    working_dir: /usr/src/myapp
+    command: gcc -o myapp main.c
+
+  app:
+    depends_on:
+      - compiler
+    image: gcc:4.9
+    cpus: "1"
+    mem_limit: 256m
+    volumes:
+      - .:/usr/src/myapp
+    working_dir: /usr/src/myapp
+    command: ./myapp

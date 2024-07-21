@@ -32,7 +32,15 @@ spark-submit --master spark://spark-master:7077  \
 
 ### 3. Выложить папку с docker-compose файлами для развертывания контейнеров. Должно быть 2 файла: docker-compose.yml, .env
 
+- [**ClickHouse**](./docker-clickhouse/docker-compose.yml)
+
+- [**Kafka**](./docker-kafka/docker-compose.yaml)
+
+- [**Spark**](./docker-spark/docker-compose.yml)
+
 ### 4. Запушить в свой гит получившийся таск спарк
+
+- [**Task Spark**](./Streams/shkCreate_sync.py)
 
 ### 5. Выложить в гит скрины с содержимым конечной папки в вашем клике
 

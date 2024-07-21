@@ -4,3 +4,4 @@ secrets
 *.DS_Store
 kafka-wb/sasl
 .DS_Store
+pyspark/Streams/credentials_spark.json

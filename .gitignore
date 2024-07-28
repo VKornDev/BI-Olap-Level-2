@@ -5,3 +5,8 @@ secrets
 kafka-wb/sasl
 .DS_Store
 pyspark/Streams/credentials_spark.json
+airflow/docker/docker-airflow/config
+airflow/docker/docker-airflow/dags
+airflow/docker/docker-airflow/logs
+airflow/docker/docker-airflow/plugins
+airflow/*.ipynb

@@ -22,6 +22,7 @@
 Настраиваю сеть контейнера airflow
 
 `docker network connect docker-airflow_default local-postgres`
+
 `docker network connect docker-airflow_default local-clickhouse-server`
 
 Добавляю в контейнеры Airflow пакет clickhouse-driver

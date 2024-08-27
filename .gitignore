@@ -11,3 +11,4 @@ airflow/docker/docker-airflow/logs
 airflow/docker/docker-airflow/plugins
 airflow/*.ipynb
 airflow/*.sql
+project/data

@@ -1,0 +1,77 @@
+version: '3.7'
+services:
+  clickhouse-keeper:
+    image: clickhouse/clickhouse-keeper
+    container_name: clickhouse-keeper
+    hostname: clickhouse-keeper
+    volumes:
+      - ./config/clickhouse-keeper/keeper_config.xml:/etc/clickhouse-keeper/keeper_config.xml
+    ports:
+      - "9181:9181"
+    networks:
+      - clickhouse-net
+
+  clickhouse-shard1-replica1:
+    image: clickhouse/clickhouse-server:24-alpine
+    container_name: clickhouse-shard1-replica1
+    hostname: clickhouse-shard1-replica1
+    volumes:
+      - ./config/clickhouse-shard1-replica1:/etc/clickhouse-server/config.d
+    networks:
+      - clickhouse-net
+    ports:
+      - "8124:8123"
+    depends_on:
+      - clickhouse-keeper
+
+  clickhouse-shard1-replica2:
+    image: clickhouse/clickhouse-server:24-alpine
+    container_name: clickhouse-shard1-replica2
+    hostname: clickhouse-shard1-replica2
+    volumes:
+      - ./config/clickhouse-shard1-replica2:/etc/clickhouse-server/config.d
+    networks:
+      - clickhouse-net
+    depends_on:
+      - clickhouse-keeper
+
+  clickhouse-shard2-replica1:
+    image: clickhouse/clickhouse-server:24-alpine
+    container_name: clickhouse-shard2-replica1
+    hostname: clickhouse-shard2-replica1
+    volumes:
+      - ./config/clickhouse-shard2-replica1:/etc/clickhouse-server/config.d
+    networks:
+      - clickhouse-net
+    depends_on:
+      - clickhouse-keeper
+
+  clickhouse-shard2-replica2:
+    image: clickhouse/clickhouse-server:24-alpine
+    container_name: clickhouse-shard2-replica2
+    hostname: clickhouse-shard2-replica2
+    volumes:
+      - ./config/clickhouse-shard2-replica2:/etc/clickhouse-server/config.d
+    networks:
+      - clickhouse-net
+    depends_on:
+      - clickhouse-keeper
+
+  clickhouse-main:
+    image: clickhouse/clickhouse-server:24-alpine
+    container_name: clickhouse-main
+    hostname: clickhouse-main
+    volumes:
+      - ./config/clickhouse-main:/etc/clickhouse-server/config.d
+      - ./users/clickhouse-main:/etc/clickhouse-server/users.d
+    networks:
+      - clickhouse-net
+    ports:
+      - "9000:9000"
+      - "8123:8123"
+    depends_on:
+      - clickhouse-keeper
+
+networks:
+  clickhouse-net:
+    driver: bridge

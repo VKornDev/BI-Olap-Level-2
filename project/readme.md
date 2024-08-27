@@ -15,7 +15,7 @@ clickhouse-client
 
 select * from system.clusters
 ```
-[<img src="img/1.png" width="1100"/>](system-clusters)
+[<img src="img/1.png" width="1100"/>](img/1.png)
 
 ### 2) Поднимаем clickhouse-keeper
 - Добавляем в `docker-compose.yml` сервис clickhouse-keeper. Объединяем в 1 сеть. Пробрасываем дефолтный порт. Добавляем файл-конфигурации по пути `/etc/clickhouse-keeper/keeper_config.xml`
@@ -35,7 +35,7 @@ select * from system.zookeeper_connection
 
 echo mntr | nc localhost 9181
 ```
-[<img src="img/2.png" width="400"/>](system-zookeeper)
+[<img src="img/2.png" width="400"/>](img/2.png)
 
 ### 3) Поднимаем main clickhouse server
 - Добавляем в `docker-compose.yml` сервис clickhouse-server. Объединяем в 1 сеть. Пробрасываем дефолтные порты. Добавляем файл-конфигурации в директорию `/etc/clickhouse-server/config.d`
@@ -44,19 +44,19 @@ echo mntr | nc localhost 9181
 
 **Проверка**:
 
-[<img src="img/3.png" width="800"/>](create-replicated-table)
+[<img src="img/3.png" width="800"/>](img/3.png)
 
 Создание реплицированной таблицы на шардах
 
-[<img src="img/4.png" width="800"/>](create-distributed-table)
+[<img src="img/4.png" width="800"/>](img/4.png)
 
 Создание распределённой таблицы на мейне
 
-[<img src="img/5.png" width="1100"/>](insert-main)
+[<img src="img/5.png" width="1100"/>](img/5.png)
 
 Проверка после insert'a данных в распределённую таблицу
 
-[<img src="img/6.png" width="900"/>](shard)
+[<img src="img/6.png" width="900"/>](img/6.png)
 
 Проверка данных на одном шарде
 
